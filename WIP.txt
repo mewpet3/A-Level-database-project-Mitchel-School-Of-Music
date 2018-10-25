@@ -1,0 +1,30 @@
+public enum Table
+{
+    Student,
+    Tutor,
+    Room,
+    ExamEntry,
+    ExternalExam,
+    Payment,
+    BlockBooking,
+    TuitionChoice,
+    TimeTabledLessons,
+    TutorTakes
+}
+
+private static SqlDataAdapter[] tableDataAdapter = new SqlDataAdapter[10];
+
+public static SqlDataAdapter TableDataAdapter(Table table)
+{
+    get { return tableDataAdapter[(int)table]; }
+}
+public static SqlDataAdapter daStudent;
+public static SqlDataAdapter daTutor;
+public static SqlDataAdapter daRoom;
+public static SqlDataAdapter daExamEntry;
+public static SqlDataAdapter daExternalExam;
+public static SqlDataAdapter daPayment;
+public static SqlDataAdapter daBlockBooking;
+public static SqlDataAdapter daTuitionChoice;
+public static SqlDataAdapter daTimetabledLesson;
+public static SqlDataAdapter daTutorTakes;

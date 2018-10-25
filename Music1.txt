@@ -1,0 +1,242 @@
+create database Music1;
+
+  USE Music1;
+
+  CREATE TABLE Student
+  (
+         StudentNo int IDENTITY (1,1) PRIMARY KEY not null,
+         FirstName varchar(30)not null,
+         Surname varchar(30)not null,
+         Address varchar(30)not null,
+         Town varchar(30)not null,
+         PostCode varchar(9)not null,
+         Email varchar(50)not null,
+         DOB Date not null,
+         Gender char(1) not null,
+         Disability bit not null,
+         ContactTelNo varchar(13)not null,
+         ParentName varchar(60)not null,
+         DateJoined Date not null,
+         DateLeft Date,
+         CurrentStudent bit not null
+  );
+  insert into Student (FirstName, Surname, Address, Town, PostCode, Email, DOB, Gender, Disability, ContactTelNo, ParentName, DateJoined, DateLeft, CurrentStudent)
+  VALUES
+  ('James','Candler','42c, Tormwell Street', 'Belfast', 'BT308FH', 'james_candler@hotmail.co.uk', '1998-01-04', 'M', 0, '+440284459324', 'Janice Candler', '2016-06-09', null, 1),
+  ('Anne','Samuels','21, Tormwell Street', 'Belfast', 'BT303TG', 'anne_samuels@hotmail.co.uk', '1999-04-16', 'F', 0, '+440284424755', 'Dylan Samuels', '2016-08-21', null, 1),
+  ('Aaron','Delson','14, Adelade Road', 'Dundrum', 'BT308DF', 'aaron_delson@hotmail.co.uk', '1996-06-10', 'M', 0, '+440284435751', 'Bob Delson', '2016-02-25', null, 1),
+  ('Dalton','Ward','16, Commons Road', 'Ballykinlar', 'BT308DA', 'dalton_ward@hotmail.co.uk', '1998-09-19', 'M', 0, '+440284493676', 'Patrick Ward', '2016-04-27', null, 1),
+  ('Andrew', 'Lennon', '23, Mayview Drive', 'Belfast', 'BT304HE', 'andrew_lennon@hotmail.co.uk', '1990-07-15', 'M', 1, '+440284453188', 'Albert Lennon', '2016-07-13', '2016-12-13', 0),
+  ('Crowan','Lethanial','83, Dakour Street', 'Ballynahinch', 'BT243YO', 'crowan_lethanial@hotmail.co.uk', '2000-02-11', 'M', 0, '+440284494262', 'Lianne Lethanial', '2016-03-27', null, 1),
+  ('Rebecca','Chell','9, Telmore Road', 'Belfast', 'BT303FR', 'rebecca_chell@hotmail.co.uk', '1997-01-01', 'F', 0, '+440284401263', 'Charles Chell', '2016-07-27', null, 1),
+  ('Margaret', 'Jackson', '12, Molenue Road', 'Dundrum', 'BT406YH', 'margaret_jackson@hotmail.co.uk', '1996-7-1', 'F', 0, '+440284497243', 'Reginald Jackson', '2015-03-07', null, 1),
+  ('Diana', 'Felmore', '21, Mareal Park', 'Dundrum', 'BT305RV', 'diana_felmore@hotmail.co.uk', '1999-04-07', 'F', 0, '+440284495310', 'Bell Felmore', '2015-11-23', null, 1),
+  ('Glin', 'Garinger', '74, Jethlin Street', 'Ballynahinch', 'BT243TL', 'glin_garinger@hotmail.co.uk', '1992-11-22', 'F', 0, '+440284495735', 'Gerald Garinger', '2015-02-02', null, 1)
+  ;
+
+  create table ExternalExam
+  (
+         ExamNo int IDENTITY(1,1) PRIMARY KEY,
+         ExamBoard varchar(30) not null,
+         TitleExam varchar(30) not null,
+         Grade varchar not null,
+         DateExam Date not null,
+         TimeExam varchar(5) not null,
+         ExamFee varchar(10) not null,
+         AcceptingEntries bit not null
+  );
+  insert into ExternalExam (ExamBoard, TitleExam, Grade, DateExam, TimeExam, ExamFee, AcceptingEntries)
+  VALUES
+  ('Trinity College London', 'Flute', 'D', '2018-01-28', '10:00', '£150.00', 1),
+  ('London College of Music', 'Violin', 'I', '2017-09-07', '13:00', '£100.00', 1),
+  ('Trinity College London', 'Bass Guitar', 'B', '2017-07-14', '14:00', '£75.00', 1)
+  ;
+
+  CREATE TABLE Room
+  (
+        RoomNo int IDENTITY(1,1) PRIMARY KEY,
+        RoomType varchar(30) not null,
+        Capacity int not null,
+        InUse bit not null
+  );
+  insert into Room (RoomType, Capacity, InUse)
+    VALUES
+    ('Hall', 1000, 0),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 1),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 1),
+    ('PracticeRoom', 12, 0),
+    ('PracticeRoom', 12, 1),
+    ('PracticeRoom', 12, 0),
+    ('ClassRoom', 23, 1),
+    ('ClassRoom', 23, 1),
+    ('ClassRoom', 23, 0),
+    ('ClassRoom', 23, 0)
+  ;
+
+  create table TuitionChoice
+  (
+        TuitionChoice varchar(50) PRIMARY KEY,
+        CurrentlyOffered bit not null
+  );
+  insert into TuitionChoice (TuitionChoice, CurrentlyOffered)
+    VALUES
+    ('Acoustic Guitar', 1),
+    ('Accordion', 0),
+    ('Banjo', 0),
+    ('Bass Guitar', 1),
+    ('Bongo', 0),
+    ('Cello', 1),
+    ('Clarinet', 1),
+    ('Drums', 1),
+    ('Electric Guitar', 1),
+    ('Horn', 0),
+    ('Lute', 1),
+    ('Organ', 1),
+    ('Piano', 1),
+    ('Piccolo', 0),
+    ('Recorder', 1),
+    ('Saxophone', 1),
+    ('Synthesizer', 1),
+    ('Tambourine', 1),
+    ('Spoons', 0),
+    ('Trombone', 1),
+    ('Viola', 0),
+    ('Violin', 1)
+  ;
+
+  CREATE TABLE ExamEntry
+  (
+        ExamEntryNo int IDENTITY (1,1) PRIMARY KEY,
+        ExamNo int FOREIGN KEY references ExternalExam(ExamNo) not null,
+        StudentNo int FOREIGN KEY references Student(StudentNo) not null,
+        DateEntry Date not null,
+        Fee decimal(7,2) not null,
+        Paid bit not null,
+        DatePaid Date
+  );
+
+  create table Payment
+  (
+         PaymentNo int IDENTITY (1,1) PRIMARY KEY,
+         RefNo int not null,
+         StudentNo int FOREIGN KEY references Student(StudentNo) not null,
+         Description varchar(50) not null,
+         DatePaid Date not null,
+         AmountPaid decimal(7,2) not null,
+         PaymentMethod varchar(50) not null,
+         ResponsibleEmployee varchar(60) not null,
+         Sponsor varchar(60),
+         SponsorOwner varchar(60),
+         Paid bit not null
+  );
+
+  create table BlockBooking
+  (
+         BookingNo int IDENTITY (1,1) PRIMARY KEY,
+         StudentNo int FOREIGN KEY references Student(StudentNo) not null,
+         TuitionChoice varchar(50) FOREIGN KEY references TuitionChoice(TuitionChoice) not null,
+         DateBooking Date not null,
+         AbilityLevel varchar(1) not null,
+         NoLessons int not null,
+         DiscountRate int not null,
+         LessonRate decimal(7,2) not null,
+         TotalDue decimal(7,2) not null,
+         Paid bit not null,
+         WaitingList bit not null
+  );
+  insert into BlockBooking (StudentNo, TuitionChoice, DateBooking, AbilityLevel, NoLessons, DiscountRate, LessonRate, TotalDue, Paid, WaitingList)
+    VALUES
+    (1, 'Drums', '2016-12-20', 'B', 10, 15, 15.00, 120.00, 1, 0)
+    ;
+
+  create table Tutor
+  (
+         TutorNo int IDENTITY (1,1) PRIMARY KEY,
+         FirstName varchar(30)not null,
+         Surname varchar(30)not null,
+         Address varchar(30)not null,
+         Town varchar(30)not null,
+         PostCode varchar(9)not null,
+         Email varchar(50)not null,
+         DOB Date not null,
+         Gender char not null,
+         Disability bit not null,
+         ContactTelNo varchar(13)not null,
+         NextOfKin varchar(60)not null,
+         DateJoined Date not null,
+         DateLeft Date,
+         CurrentTutor bit not null
+  );
+  insert into Tutor (FirstName, Surname, Address, Town, PostCode, Email, DOB, Gender, Disability, ContactTelNo, NextOfKin, DateJoined, DateLeft, CurrentTutor)
+    VALUES
+    ('Reginald', 'Jackson', '12, Molenue Road', 'Dundrum', 'BT306YH', 'reginald_jackson@hotmail.co.uk', '1979-2-7', 'M', 0, '+440284497243', 'Margaret Jackson', '2015-03-05', null, 1),
+    ('Tim', 'Philips', '2, Commons Road', 'Ballykinlar', 'BT305DG', 'tim_philips@hotmail.co.uk', '1993-2-23', 'M', 0, '+440284452910', 'Douglas Philips', '2015-6-15', null, 1),
+    ('Jerry', 'Wilder', '17, Yevrings Street', 'Comber', 'BT308CA', 'jerry_wilder@hotmail.co.uk', '1979-5-27', 'F', 1, '+440284449647', 'Terry Wilder', '2015-6-15', null, 1),
+    ('Terry', 'Philips', '2, Commons Road', 'Ballykinlar', 'BT305DG', 'terry_philips@hotmail.co.uk', '1990-5-17', 'M', 0, '+44028443864', 'Leonard Philips', '2015-1-28', null, 1),
+    ('Olaf', 'Shelo', '28, Trent Road', 'Belfast', 'BT309TC', 'olaf_shelo@hotmail.co.uk', '1970-7-22', 'M', 1, '+44028448536', 'Phil Shelo', '2015-8-01', null, 1)
+    ;
+
+  create table TimetabledLesson
+  (
+        TLNo int IDENTITY (1,1) PRIMARY KEY,
+        TutorNo int FOREIGN KEY references Tutor(TutorNo),
+        StudentNo int FOREIGN KEY references Student(StudentNo),
+        RoomNo int FOREIGN KEY references Room(RoomNo),
+        BookingNo int FOREIGN KEY references BlockBooking(BookingNo),
+        DateLesson date not null,
+        TimeLesson smallint not null,
+        StudentPresent bit not null,
+        Cancellation bit not null,
+        CancellationReason varchar(1000)
+  );
+  insert into TimetabledLesson (TutorNo, StudentNo, RoomNo, BookingNo, DateLesson, TimeLesson, StudentPresent, Cancellation, CancellationReason)
+  VALUES
+  (1, 1, 3, 1, '2017-02-28', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-03-7', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-03-14', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-03-21', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-03-28', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-04-4', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-04-11', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-04-18', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-04-25', 3, 1, 0, null),
+  (1, 1, 3, 1, '2017-05-2', 3, 1, 0, null)
+  ;
+
+  create table TutorTakes
+  (
+        TutorTakesNo int IDENTITY (1,1) PRIMARY KEY,
+        TutorNo int FOREIGN KEY references Tutor(TutorNo),
+        TuitionChoice varchar(50) FOREIGN KEY references TuitionChoice(TuitionChoice),
+        TeachUpToGrade varchar(1) not null
+  );
+  insert into TutorTakes (TutorNo, TuitionChoice, TeachUpToGrade)
+  VALUES
+  (1, 'Drums','D'),
+  (1, 'Acoustic Guitar', 'I'),
+  (2, 'Electric Guitar', 'D'),
+  (2, 'Lute', 'A'),
+  (2, 'Acoustic Guitar', 'A'),
+  (2, 'Bass Guitar', 'A'),
+  (2, 'Recorder', 'A'),
+  (3, 'Recorder', 'D'),
+  (3, 'Violin', 'D'),
+  (3, 'Cello', 'I'),
+  (3, 'Clarinet', 'B'),
+  (4, 'Synthesizer', 'D'),
+  (4, 'Recorder', 'B'),
+  (4, 'Saxophone', 'D'),
+  (4, 'Clarinet', 'I'),
+  (4, 'Trombone', 'A'),
+  (5, 'Tambourine', 'D'),
+  (5, 'Piano', 'D'),
+  (5, 'Organ', 'A'),
+  (5, 'Bass Guitar', 'I')
+  ;

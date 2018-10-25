@@ -1,0 +1,2 @@
+PostCode Regex:   http://stackoverflow.com/questions/5820820/regular-expression-in-c-sharp-uk-postcode
+TelNo Regex:      http://stackoverflow.com/questions/25155970/validating-uk-phone-number-regex-c
